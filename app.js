@@ -19,17 +19,29 @@ var Chart = (function (window, d3) {
             });
     });
 
+    function addZeroIfNumberIsLessThan10(number) {
+        if(number < 10) {
+            return "0" + number;
+        } else {
+            return number;
+        }
+    }
+
     function calculateStartDateForAPICall(currentDateObject) {
         var currentYear = currentDateObject.getFullYear();
         var currentMonth = currentDateObject.getMonth() + 1;
+        currentMonth = addZeroIfNumberIsLessThan10(currentMonth);
         var currentDay = currentDateObject.getDate();
+        currentDay = addZeroIfNumberIsLessThan10(currentDay);
         return `${currentYear - 1}-${currentMonth}-${currentDay}`;
     }
 
     function calculateEndDateForAPICall(currentDateObject) {
         var currentYear = currentDateObject.getFullYear();
         var currentMonth = currentDateObject.getMonth() + 1;
+        currentMonth = addZeroIfNumberIsLessThan10(currentMonth);
         var currentDay = currentDateObject.getDate();
+        currentDay = addZeroIfNumberIsLessThan10(currentDay);
         return `${currentYear}-${currentMonth}-${currentDay}`;
     }
 
